@@ -1,2 +1,11 @@
 /README.html
 .DS_Store
+/Pharo.changes
+/Pharo.image
+*.log
+*.out
+vm/
+vm.sh
+*.pier*
+files/
+package-cache/

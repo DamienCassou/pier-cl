@@ -2,11 +2,10 @@
 
 IMAGE_URL="https://ci.inria.fr/rmod/job/Pier3BookOnPharo20/lastSuccessfulBuild/artifact/Pier3BookOnPharo20.zip"
 
-
 # stop the script if a single command fails
 set -e
 
-wget --quiet -qO - http://pharo.gforge.inria.fr/ci/ciNBCog.sh | bash
+wget --output-document - http://pharo.gforge.inria.fr/ci/ciNBCog.sh | bash
 wget --progress=bar:force --output-document=image.zip $IMAGE_URL
 
 
