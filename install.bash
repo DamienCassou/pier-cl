@@ -5,8 +5,13 @@ IMAGE_URL="https://ci.inria.fr/rmod/job/Pier3BookOnPharo20/lastSuccessfulBuild/a
 # stop the script if a single command fails
 set -e
 
-wget --output-document - http://pharo.gforge.inria.fr/ci/ciNBCog.sh | bash
-wget --progress=bar:force --output-document=image.zip $IMAGE_URL
+
+# on mac os wget can be pretty old and not recognizing --no-check-certificate
+CERTCHECK="--no-check-certificate"
+wget --help | grep -- "$CERTCHECK" 2>&1 > /dev/null || CERTCHECK=''
+
+wget ${CERTCHECK} --output-document - http://pharo.gforge.inria.fr/ci/ciNBCog.sh | bash
+wget ${CERTCHECK} --progress=bar:force --output-document=image.zip $IMAGE_URL
 
 
 IMAGE_DIR="image"
