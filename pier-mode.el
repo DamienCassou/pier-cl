@@ -110,6 +110,7 @@ face."
   (set (make-local-variable 'font-lock-defaults)
        '(pier-mode-font-lock-keywords)))
 
+;;;###autoload
 (add-to-list 'auto-mode-alist '("\\.pier$" . pier-mode))
 
 (provide 'pier-mode)
