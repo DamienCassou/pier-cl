@@ -54,18 +54,32 @@ face."
              :group 'pier-faces))
        ,(when regex
           `(defconst ,regex-name
-             ,regex
+             ,(pier-preprocess-regex regex)
              ,(format "Regular expression for matching %s text." name))))))
 
-(pier-defformat
- italic
- '((t (:inherit font-lock-variable-name-face :slant italic)))
- "''\\(.*\\)''")
+(defun pier-preprocess-regex (regex)
+  (replace-regexp-in-string
+   "\\[\\[anything\\]\\]"
+   "\\(.\\|\n[^\n]\\)*?"
+   regex
+   t ;; don't interpret capital letters
+   t ;; don't interpret replacement string as a regex
+   ))
 
 (pier-defformat
  bold
  '((t (:inherit font-lock-variable-name-face :weight bold)))
- "\"\"\\(.*\\)\"\"")
+ "\"\"[[anything]]\"\"")
+
+(pier-defformat
+ italic
+ '((t (:inherit font-lock-variable-name-face :slant italic)))
+ "''[[anything]]''")
+
+(pier-defformat
+ monospaced
+ '((t (:inherit font-lock-constant-face)))
+ "==\\(.*?\\)==")
 
 (pier-defformat
  header
@@ -91,15 +105,33 @@ face."
  '((t (:inherit pier-header-face :height 1.15)))
  "^!!!! \\(.*\\)$")
 
-(defvar pier-mode-font-lock-keywords
+(defvar pier-mode-font-lock-keywords nil
+  "Syntax highlighting for Pier files.")
+
+(setq pier-mode-font-lock-keywords
   (list
    (cons pier-regex-header-1 'pier-header-1-face)
    (cons pier-regex-header-2 'pier-header-2-face)
    (cons pier-regex-header-3 'pier-header-3-face)
    (cons pier-regex-header-4 'pier-header-4-face)
    (cons pier-regex-bold     'pier-bold-face)
-   (cons pier-regex-italic   'pier-italic-face))
-  "Syntax highlighting for Pier files.")
+   (cons pier-regex-italic   'pier-italic-face)))
+
+(defun pier-font-lock-extend-region ()
+  "Extend the search region to include an entire block of text.
+This helps improve font locking for block constructs such as pre blocks."
+  ;; Avoid compiler warnings about these global variables from font-lock.el.
+  ;; See the documentation for variable `font-lock-extend-region-functions'.
+  (eval-when-compile (defvar font-lock-beg) (defvar font-lock-end))
+  (save-excursion
+    (goto-char font-lock-beg)
+    (let ((found (re-search-backward "\n\n" nil t)))
+      (when found
+        (goto-char font-lock-end)
+        (when (re-search-forward "\n\n" nil t)
+          (beginning-of-line)
+          (setq font-lock-end (point)))
+        (setq font-lock-beg found)))))
 
 ;;;###autoload
 (define-derived-mode pier-mode text-mode "Pier"
@@ -108,7 +140,12 @@ face."
   (setq tab-width 4)
   ;; Font lock.
   (set (make-local-variable 'font-lock-defaults)
-       '(pier-mode-font-lock-keywords)))
+       '(pier-mode-font-lock-keywords))
+  (set (make-local-variable 'font-lock-multiline) t)
+
+  ;; Multiline font lock
+  (add-hook 'font-lock-extend-region-functions
+            'pier-font-lock-extend-region))
 
 ;;;###autoload
 (add-to-list 'auto-mode-alist '("\\.pier$" . pier-mode))
