@@ -1,0 +1,59 @@
+!This is a section
+
+!!This is a twobang
+
+!!!This is a threebang section
+
+
+
+This is the beginning of a paragraph. And another one with a lot of nice text
+""As defined bold"" by ''Martin Fowler'' italic, smells are certain structures in the code that suggest (sometimes they scream for) the possibility of refactoring. The string =='a'== is a string.
+Basically, three types of smells can be found in source code at different levels: architectural, design and implementation. \ja{remote the following sentence or explain each term. For a non expert, it is not clear what is behind each concept.}The architectural level includes smells such as "god package" and "cyclical dependency between 
+
+next we should have a line. Not necessary in fact 
+_
+
+This is code in text ==100 factorial== yes and we have an index +index:WAComponent+ myfriend normally we should have WAComponent in the index.
+
+This is an url *http://www.pharo-project.org*. *ref:foo* is a reference.
+The following method is 
+
+=Integer>>factorial
+=   ^ self < 2
+=      ifTrue: [ 1 ]
+=      ifFalse: [ self * (self - 1) factorial ]
+
+This is a bulleted list
+
+- a ted 
+- b ted lkjljkljkljklj
+- c ted 
+
+This is an ordered list
+
+# 1 kljlkjkljklj lkljlkjklj jkl jklj lkj lkjlkj lkj 
+# 2 kjkjljk jkjkl jkl jk kjkj kjkj kjkj kjkj kjkj kj
+# 3 jkjlkjrterere e trert tr ter te tre ertret ertter ter ert
+
+;This is a definition: 
+:yeha a difficult term
+
++image.pdf|width=100%+
+
+@@note foo
+
+@@important super important 
+
+
+@@advanced do not use it
+
+@@todo we should really do that 
+
+the following does not work
+To make @@something@@ subscript, surround it with @@
+To make something ^^superscript^^, surround it with ^^
+To make something underlined, surround it with __
+
+
+
+
