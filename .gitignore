@@ -9,3 +9,4 @@ vm.sh
 *.pier*
 files/
 package-cache/
+/PharoV10.sources
