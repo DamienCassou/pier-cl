@@ -88,22 +88,22 @@ face."
 (pier-defformat
  header-1
  '((t (:inherit pier-header-face :height 1.3)))
- "^! \\(.*\\)$")
+ "^!\\(.*\\)$")
 
 (pier-defformat
  header-2
  '((t (:inherit pier-header-face :height 1.25)))
- "^!! \\(.*\\)$")
+ "^!!\\(.*\\)$")
 
 (pier-defformat
  header-3
  '((t (:inherit pier-header-face :height 1.2)))
- "^!!! \\(.*\\)$")
+ "^!!!\\(.*\\)$")
 
 (pier-defformat
  header-4
  '((t (:inherit pier-header-face :height 1.15)))
- "^!!!! \\(.*\\)$")
+ "^!!!!\\(.*\\)$")
 
 (defvar pier-mode-font-lock-keywords nil
   "Syntax highlighting for Pier files.")
