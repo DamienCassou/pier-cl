@@ -1,6 +1,6 @@
 #!/bin/bash
 
-IMAGE_URL="https://ci.inria.fr/rmod/job/Pier3BookOnPharo20/lastSuccessfulBuild/artifact/Pier3BookOnPharo20.zip"
+IMAGE_URL="https://ci.inria.fr/pharo-contribution/job/Pier3BookOnPharo20/lastSuccessfulBuild/artifact/Pier3BookOnPharo20.zip"
 
 # stop the script if a single command fails
 set -e
