@@ -136,6 +136,8 @@ This helps improve font locking for block constructs such as pre blocks."
 ;;;###autoload
 (define-derived-mode pier-mode text-mode "Pier"
   "Major mode for editing Pier CMS files."
+  ;; Don't fill paragraphs as Pier expects everything on one line
+  (setq fill-paragraph-function (lambda (ignored) t))
   ;; Natural Pier tab width
   (setq tab-width 4)
   ;; Font lock.
