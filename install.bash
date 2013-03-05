@@ -6,7 +6,7 @@ IMAGE_URL="https://ci.inria.fr/pharo-contribution/job/Pier3BookOnPharo20/lastSuc
 set -e
 
 
-# on mac os wget can be pretty old and not recognizing --no-check-certificate
+# on mac os wget can be quite old and not recognizing --no-check-certificate
 CERTCHECK="--no-check-certificate"
 wget --help | grep -- "$CERTCHECK" 2>&1 > /dev/null || CERTCHECK=''
 
