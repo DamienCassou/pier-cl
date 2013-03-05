@@ -17,3 +17,4 @@ auto/
 *.gz
 *.tex
 *.toc
+/Sample.pier.html
