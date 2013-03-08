@@ -144,6 +144,10 @@ This helps improve font locking for block constructs such as pre blocks."
   (set (make-local-variable 'font-lock-defaults)
        '(pier-mode-font-lock-keywords))
   (set (make-local-variable 'font-lock-multiline) t)
+  ;; imenu
+  (set (make-local-variable 'imenu-generic-expression)
+       (list (list nil pier-regex-header-1 1)
+             (list nil pier-regex-header-2 1)))
 
   ;; Multiline font lock
   (add-hook 'font-lock-extend-region-functions
