@@ -131,11 +131,17 @@ generates
 ||centered||centered||centered
 |{ left |} right || centered
 
-!!Links and Anchors
+!!Links
+
+!!!Internal Links and Anchors
 
 @anchorName
 
 To put an anchor (equivalent to \\label in Latex), use the ==@anchorName== syntax on a ''separate line''. Then, when you want to link to it (equivalent to \\ref in Latex), use the ==\*anchorName\*== syntax. Anchors are invisible and links will be rendered as: *anchorName*.
+
+!!!External Links
+
+To create links to externals resources, use the ==*====Pharo>http://pharo-project.org/*== syntax which is rendered as *Pharo>http://pharo-project.org/*.
 
 !!Pictures
 
@@ -229,3 +235,7 @@ To create a preformatted block, begin each line with =====. A preformatted block
 = this is preformatted text
 = this line as well
 ]]]
+
+% Local Variables:
+% ispell-local-dictionary: "english"
+% End:
