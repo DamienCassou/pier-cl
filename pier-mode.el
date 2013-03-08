@@ -133,9 +133,21 @@ This helps improve font locking for block constructs such as pre blocks."
           (setq font-lock-end (point)))
         (setq font-lock-beg found)))))
 
+;; Syntax table
+(defvar pier-syntax-table nil "Syntax table for `pier-mode'.")
+(setq pier-syntax-table
+      (let ((synTable (make-syntax-table)))
+
+        ;; a comment starts with a '%' and ends with a new line
+        (modify-syntax-entry ?% "< b" synTable)
+        (modify-syntax-entry ?\n "> b" synTable)
+
+        synTable))
+
 ;;;###autoload
 (define-derived-mode pier-mode text-mode "Pier"
   "Major mode for editing Pier CMS files."
+  :syntax-table pier-syntax-table
   ;; Don't fill paragraphs as Pier expects everything on one line
   (setq fill-paragraph-function (lambda (ignored) t))
   ;; Natural Pier tab width
@@ -148,7 +160,8 @@ This helps improve font locking for block constructs such as pre blocks."
   (set (make-local-variable 'imenu-generic-expression)
        (list (list nil pier-regex-header-1 1)
              (list nil pier-regex-header-2 1)))
-
+  ;; comments
+  (set (make-local-variable 'comment-start) "%")
   ;; Multiline font lock
   (add-hook 'font-lock-extend-region-functions
             'pier-font-lock-extend-region))
