@@ -236,6 +236,10 @@ To create a preformatted block, begin each line with =====. A preformatted block
 = this line as well
 ]]]
 
+!!Commented lines
+
+Lines that start with a ==%== are considered comments and will be rendered as such in the output document (e.g., in HTML, such a line would be surrounded by ==<!--== and ==-->==).
+
 % Local Variables:
 % ispell-local-dictionary: "english"
 % End:
