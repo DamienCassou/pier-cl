@@ -97,6 +97,11 @@ face."
 (pier-defformat-special-text monospaced (:inherit font-lock-constant-face) "==")
 
 (pier-defformat
+ script
+ '((t (:inherit pier-monospaced-face)))
+ "\\[\\[\\[[[anything]]\\]\\]\\]")
+
+(pier-defformat
  header
  '((t (:inherit font-lock-function-name-face :weight bold))))
 
