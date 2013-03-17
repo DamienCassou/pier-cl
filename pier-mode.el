@@ -72,7 +72,7 @@ face."
 (defun pier-preprocess-regex (regex)
   (replace-regexp-in-string
    "\\[\\[anything\\]\\]"
-   "\\(.\\|\n[^\n]\\)*?"
+   "\\(.\\|\n\\)*?"
    regex
    t ;; don't interpret capital letters
    t ;; don't interpret replacement string as a regex
