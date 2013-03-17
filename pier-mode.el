@@ -52,7 +52,7 @@ face."
     `(progn
        ;; Save face specification to dedicated variable
        (defvar ,face-name ',face-name
-         ,(format "Face  name to use for %s text." name))
+         ,(format "Face name to use for %s text." name))
        ;; Save face specification to dedicated face
        ,(when face-spec
           `(defface ,face-name
