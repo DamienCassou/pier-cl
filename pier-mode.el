@@ -36,6 +36,11 @@
   :group 'pier
   :group 'faces)
 
+(defvar pier-mode-font-lock-keywords nil
+  "Syntax highlighting for Pier files.")
+
+(setq pier-mode-font-lock-keywords nil)
+
 (defmacro pier-defformat (name &optional face-spec regex)
   "Generate necessary vars and faces for face NAME.
 NAME is the name of the specific face to create without prefix or
@@ -55,7 +60,11 @@ face."
        ,(when regex
           `(defconst ,regex-name
              ,(pier-preprocess-regex regex)
-             ,(format "Regular expression for matching %s text." name))))))
+             ,(format "Regular expression for matching %s text." name)))
+       ;; Associates regex with face name for syntax highlighting:
+       ,(when (and face-spec regex)
+          `(add-to-list 'pier-mode-font-lock-keywords
+                        (cons ,regex-name ',face-name))))))
 
 (defun pier-preprocess-regex (regex)
   (replace-regexp-in-string
@@ -107,15 +116,6 @@ face."
 
 (defvar pier-mode-font-lock-keywords nil
   "Syntax highlighting for Pier files.")
-
-(setq pier-mode-font-lock-keywords
-  (list
-   (cons pier-regex-header-1 'pier-header-1-face)
-   (cons pier-regex-header-2 'pier-header-2-face)
-   (cons pier-regex-header-3 'pier-header-3-face)
-   (cons pier-regex-header-4 'pier-header-4-face)
-   (cons pier-regex-bold     'pier-bold-face)
-   (cons pier-regex-italic   'pier-italic-face)))
 
 (defun pier-font-lock-extend-region ()
   "Extend the search region to include an entire block of text.
