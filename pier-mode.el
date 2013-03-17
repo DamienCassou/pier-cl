@@ -78,44 +78,23 @@ face."
    t ;; don't interpret replacement string as a regex
    ))
 
+(defmacro pier-defformat-special-text (name face-spec markup)
+  `(pier-defformat
+    ,name
+    '((t ,(append '(:inherit pier-special-text-face) face-spec)))
+    ,(concat "[^\\]" markup "[[anything]][^\\]" markup)))
+
 (pier-defformat
  special-text
  '((t (:inherit font-lock-variable-name-face))))
 
-(pier-defformat
- bold
- '((t (:inherit pier-special-text-face :weight bold)))
- "\"\"[[anything]]\"\"")
-
-(pier-defformat
- italic
- '((t (:inherit pier-special-text-face :slant italic)))
- "''[[anything]]''")
-
-(pier-defformat
- strikethrough
- '((t (:inherit pier-special-text-face :strike-through t)))
- "--[[anything]]--")
-
-(pier-defformat
- subscript
- '((t (:inherit pier-special-text-face :height 0.8)))
- "@@[[anything]]@@")
-
-(pier-defformat
- superscript
- '((t (:inherit pier-special-text-face :height 0.8)))
- "\\^^[[anything]]^^")
-
-(pier-defformat
- underlined
- '((t (:inherit pier-special-text-face :underline t)))
- "__[[anything]]__")
-
-(pier-defformat
- monospaced
- '((t (:inherit font-lock-constant-face)))
- "[^\\]==[[anything]][^\\]==")
+(pier-defformat-special-text bold (:weight bold) "\"\"")
+(pier-defformat-special-text italic (:slant italic) "''")
+(pier-defformat-special-text strikethrough (:strike-through t) "--")
+(pier-defformat-special-text subscript (:height 0.8) "@@")
+(pier-defformat-special-text superscript (:height 0.8) "\\^^")
+(pier-defformat-special-text underlined (:underline t) "__")
+(pier-defformat-special-text monospaced (:inherit font-lock-constant-face) "==")
 
 (pier-defformat
  header
