@@ -136,7 +136,7 @@ This helps improve font locking for block constructs such as pre blocks."
 ;; Syntax table
 (defvar pier-syntax-table nil "Syntax table for `pier-mode'.")
 (setq pier-syntax-table
-      (let ((synTable (make-syntax-table)))
+      (let ((synTable (copy-syntax-table text-mode-syntax-table)))
 
         ;; a comment starts with a '%' and ends with a new line
         (modify-syntax-entry ?% "< b" synTable)
