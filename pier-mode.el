@@ -79,13 +79,17 @@ face."
    ))
 
 (pier-defformat
+ special-text
+ '((t (:inherit font-lock-variable-name-face))))
+
+(pier-defformat
  bold
- '((t (:inherit font-lock-variable-name-face :weight bold)))
+ '((t (:inherit pier-special-text-face :weight bold)))
  "\"\"[[anything]]\"\"")
 
 (pier-defformat
  italic
- '((t (:inherit font-lock-variable-name-face :slant italic)))
+ '((t (:inherit pier-special-text-face :slant italic)))
  "''[[anything]]''")
 
 (pier-defformat
