@@ -50,13 +50,16 @@ face."
   (let ((face-name (intern (format "pier-%s-face" `,name)))
         (regex-name (intern (format "pier-regex-%s" `,name))))
     `(progn
+       ;; Save face specification to dedicated variable
        (defvar ,face-name ',face-name
          ,(format "Face  name to use for %s text." name))
+       ;; Save face specification to dedicated face
        ,(when face-spec
           `(defface ,face-name
              ,face-spec
              ,(format "Face for %s text." name)
              :group 'pier-faces))
+       ;; Save regexp to dedicated variable
        ,(when regex
           `(defconst ,regex-name
              ,(pier-preprocess-regex regex)
