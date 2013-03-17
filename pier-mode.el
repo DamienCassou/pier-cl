@@ -79,7 +79,7 @@ face."
 (pier-defformat
  monospaced
  '((t (:inherit font-lock-constant-face)))
- "==\\(.*?\\)==")
+ "[^\\]==[[anything]][^\\]==")
 
 (pier-defformat
  header
