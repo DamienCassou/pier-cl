@@ -95,6 +95,7 @@ face."
 (pier-defformat-special-text superscript (:height 0.8) "\\^^")
 (pier-defformat-special-text underlined (:underline t) "__")
 (pier-defformat-special-text monospaced (:inherit font-lock-constant-face) "==")
+(pier-defformat-special-text link (:inherit link) "\\*")
 
 (pier-defformat
  script
