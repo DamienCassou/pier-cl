@@ -93,6 +93,26 @@ face."
  "''[[anything]]''")
 
 (pier-defformat
+ strikethrough
+ '((t (:inherit pier-special-text-face :strike-through t)))
+ "--[[anything]]--")
+
+(pier-defformat
+ subscript
+ '((t (:inherit pier-special-text-face :height 0.8)))
+ "@@[[anything]]@@")
+
+(pier-defformat
+ superscript
+ '((t (:inherit pier-special-text-face :height 0.8)))
+ "\\^^[[anything]]^^")
+
+(pier-defformat
+ underlined
+ '((t (:inherit pier-special-text-face :underline t)))
+ "__[[anything]]__")
+
+(pier-defformat
  monospaced
  '((t (:inherit font-lock-constant-face)))
  "[^\\]==[[anything]][^\\]==")
