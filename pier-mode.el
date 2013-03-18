@@ -124,11 +124,12 @@ This helps improve font locking for block constructs such as pre blocks."
 
 (defun pier-insert-special-text-markup (markup)
   (cond
-   ((use-region-p)
-    (goto-char (region-beginning))
-    (insert markup)
-    (goto-char (region-end))
-    (insert markup))
+   ((mark)
+    (save-excursion
+      (insert markup)
+      (goto-char (mark))
+      (insert markup))
+      (forward-char 2))
    (t
     (insert markup)
     (save-excursion
