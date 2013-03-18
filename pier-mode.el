@@ -133,7 +133,7 @@ This helps improve font locking for block constructs such as pre blocks."
       (insert markup)
       (goto-char (mark))
       (insert markup))
-      (forward-char 2))
+      (forward-char (length markup)))
    (t
     (insert markup)
     (save-excursion
