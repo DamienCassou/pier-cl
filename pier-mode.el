@@ -25,6 +25,8 @@
 ;;
 ;;; Code:
 
+(require 'magit-key-mode) ;; for popup handling
+
 (defgroup pier nil
   "Major mode for editing text files in Pier format."
   :prefix "pier-"
@@ -92,8 +94,10 @@ face."
      (defun ,insert-markup-fn-name ()
        (interactive)
        (pier-insert-special-text-markup ,markup))
-     (define-key pier-mode-map (kbd ,(format "C-c C-f C-%c" key))
-       ',insert-markup-fn-name))))
+     (add-to-list 'pier-key-mode-special-font-actions
+                  '(,(format "%c" key)
+                    ,(capitalize (format "%s" name))
+                    ,insert-markup-fn-name)))))
 
 (defun pier-font-lock-extend-region ()
   "Extend the search region to include an entire block of text.
@@ -134,6 +138,20 @@ This helps improve font locking for block constructs such as pre blocks."
     (insert markup)
     (save-excursion
       (insert markup)))))
+
+(defvar pier-key-mode-special-font-actions nil)
+
+(defun pier-key-mode-groups ()
+  `((special-font
+     (actions ,@pier-key-mode-special-font-actions))))
+
+(defun pier-insert-special-text-markup-popup ()
+  (interactive)
+  (let ((magit-key-mode-key-maps nil)
+        (magit-key-mode-groups (pier-key-mode-groups)))
+    (magit-key-mode 'special-font)))
+
+(define-key pier-mode-map (kbd "C-c C-f") 'pier-insert-special-text-markup-popup)
 
 ;;;###autoload
 (define-derived-mode pier-mode text-mode "Pier"
