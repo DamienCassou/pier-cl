@@ -144,6 +144,11 @@ face."
  '((t (:inherit pier-header-face :height 1.15)))
  "^!!!!\\([^!].*\\)$")
 
+(pier-defformat
+ script
+ '((t (:inherit pier-monospaced-face)))
+ "\\[\\[\\[[[anything]]\\]\\]\\]")
+
 (defun pier-font-lock-extend-region ()
   "Extend the search region to include an entire block of text.
 This helps improve font locking for block constructs such as pre blocks."
