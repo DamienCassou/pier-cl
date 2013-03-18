@@ -41,7 +41,7 @@
 
 (setq pier-mode-font-lock-keywords nil)
 
-(defmacro pier-defformat (name &optional face-spec regex)
+(defmacro pier-defformat (name &optional face-spec regex regex-group)
   "Generate necessary vars and faces for face NAME.
 NAME is the name of the specific face to create without prefix or
 suffix (e.g., bold. FACE-SPEC is passed unchanged to `defface'.
@@ -67,7 +67,10 @@ face."
        ;; Associates regex with face name for syntax highlighting:
        ,(when (and face-spec regex)
           `(add-to-list 'pier-mode-font-lock-keywords
-                        (cons ,regex-name ',face-name))))))
+                        (cons ,regex-name
+                              ',(if regex-group
+                                   (list regex-group face-name)
+                                 face-name)))))))
 
 (defun pier-preprocess-regex (regex)
   (replace-regexp-in-string
@@ -78,29 +81,44 @@ face."
    t ;; don't interpret replacement string as a regex
    ))
 
-(defmacro pier-defformat-special-text (name face-spec markup)
-  `(pier-defformat
-    ,name
-    '((t ,(append '(:inherit pier-special-text-face) face-spec)))
-    ,(concat "[^\\]" markup "[[anything]][^\\]" markup)))
+(defmacro pier-defformat-special-text (name face-spec markup key)
+  (let ((insert-markup-fn-name (intern (format "pier-insert-%s-markup" name))))
+  `(progn
+     (pier-defformat
+      ,name
+      '((t ,(append '(:inherit pier-special-text-face) face-spec)))
+      ,(concat "[^\\]\\(" markup ".*?[^\\]" markup "\\)")
+      1)
+     (defun ,insert-markup-fn-name ()
+       (interactive)
+       (pier-insert-special-text-markup ,markup))
+     (define-key pier-mode-map (kbd ,(format "C-c C-f C-%c" key))
+       ',insert-markup-fn-name))))
+
 
 (pier-defformat
  special-text
  '((t (:inherit font-lock-variable-name-face))))
 
-(pier-defformat-special-text bold (:weight bold) "\"\"")
-(pier-defformat-special-text italic (:slant italic) "''")
-(pier-defformat-special-text strikethrough (:strike-through t) "--")
-(pier-defformat-special-text subscript (:height 0.8) "@@")
-(pier-defformat-special-text superscript (:height 0.8) "\\^^")
-(pier-defformat-special-text underlined (:underline t) "__")
-(pier-defformat-special-text monospaced (:inherit font-lock-constant-face) "==")
-(pier-defformat-special-text link (:inherit link) "\\*")
+(pier-defformat-special-text bold (:weight bold) "\"\"" ?b)
+(pier-defformat-special-text italic (:slant italic) "''" ?i)
+(pier-defformat-special-text strikethrough (:strike-through t) "--" ?-)
+(pier-defformat-special-text subscript (:height 0.8) "@@" ?s)
+(pier-defformat-special-text superscript (:height 0.8) "\\^^" ?^)
+(pier-defformat-special-text underlined (:underline t) "__" ?_)
+(pier-defformat-special-text link (:inherit link) "\\*" ?*)
+(pier-defformat-special-text link (:inherit link) "\\+" ?+)
+(pier-defformat-special-text monospaced (:inherit font-lock-constant-face) "==" ?=)
 
 (pier-defformat
- script
- '((t (:inherit pier-monospaced-face)))
- "\\[\\[\\[[[anything]]\\]\\]\\]")
+ note
+ '((t (:inherit pier-special-text-face :weight bold)))
+ "^@@note .*$")
+
+(pier-defformat
+ todo
+ '((t (:inherit pier-special-text-face :weight bold)))
+ "^@@todo .*$")
 
 (pier-defformat
  header
@@ -152,6 +170,18 @@ This helps improve font locking for block constructs such as pre blocks."
         (modify-syntax-entry ?\n "> b" synTable)
 
         synTable))
+
+(defun pier-insert-special-text-markup (markup)
+  (cond
+   ((use-region-p)
+    (goto-char (region-beginning))
+    (insert markup)
+    (goto-char (region-end))
+    (insert markup))
+   (t
+    (insert markup)
+    (save-excursion
+      (insert markup)))))
 
 ;;;###autoload
 (define-derived-mode pier-mode text-mode "Pier"
