@@ -95,60 +95,6 @@ face."
      (define-key pier-mode-map (kbd ,(format "C-c C-f C-%c" key))
        ',insert-markup-fn-name))))
 
-
-(pier-defformat
- special-text
- '((t (:inherit font-lock-variable-name-face))))
-
-(pier-defformat-special-text bold (:weight bold) "\"\"" ?b)
-(pier-defformat-special-text italic (:slant italic) "''" ?i)
-(pier-defformat-special-text strikethrough (:strike-through t) "--" ?-)
-(pier-defformat-special-text subscript (:height 0.8) "@@" ?s)
-(pier-defformat-special-text superscript (:height 0.8) "\\^^" ?^)
-(pier-defformat-special-text underlined (:underline t) "__" ?_)
-(pier-defformat-special-text link (:inherit link) "\\*" ?*)
-(pier-defformat-special-text link (:inherit link) "\\+" ?+)
-(pier-defformat-special-text monospaced (:inherit font-lock-constant-face) "==" ?=)
-
-(pier-defformat
- note
- '((t (:inherit pier-special-text-face :weight bold)))
- "^@@note .*$")
-
-(pier-defformat
- todo
- '((t (:inherit pier-special-text-face :weight bold)))
- "^@@todo .*$")
-
-(pier-defformat
- header
- '((t (:inherit font-lock-function-name-face :weight bold))))
-
-(pier-defformat
- header-1
- '((t (:inherit pier-header-face :height 1.3)))
- "^!\\([^!].*\\)$")
-
-(pier-defformat
- header-2
- '((t (:inherit pier-header-face :height 1.25)))
- "^!!\\([^!].*\\)$")
-
-(pier-defformat
- header-3
- '((t (:inherit pier-header-face :height 1.2)))
- "^!!!\\([^!].*\\)$")
-
-(pier-defformat
- header-4
- '((t (:inherit pier-header-face :height 1.15)))
- "^!!!!\\([^!].*\\)$")
-
-(pier-defformat
- script
- '((t (:inherit pier-monospaced-face)))
- "\\[\\[\\[[[anything]]\\]\\]\\]")
-
 (defun pier-font-lock-extend-region ()
   "Extend the search region to include an entire block of text.
 This helps improve font locking for block constructs such as pre blocks."
@@ -209,6 +155,59 @@ This helps improve font locking for block constructs such as pre blocks."
   ;; Multiline font lock
   (add-hook 'font-lock-extend-region-functions
             'pier-font-lock-extend-region))
+
+(pier-defformat
+ special-text
+ '((t (:inherit font-lock-variable-name-face))))
+
+(pier-defformat-special-text bold (:weight bold) "\"\"" ?b)
+(pier-defformat-special-text italic (:slant italic) "''" ?i)
+(pier-defformat-special-text strikethrough (:strike-through t) "--" ?-)
+(pier-defformat-special-text subscript (:height 0.8) "@@" ?s)
+(pier-defformat-special-text superscript (:height 0.8) "\\^^" ?^)
+(pier-defformat-special-text underlined (:underline t) "__" ?_)
+(pier-defformat-special-text link (:inherit link) "\\*" ?*)
+(pier-defformat-special-text link (:inherit link) "\\+" ?+)
+(pier-defformat-special-text monospaced (:inherit font-lock-constant-face) "==" ?=)
+
+(pier-defformat
+ note
+ '((t (:inherit pier-special-text-face :weight bold)))
+ "^@@note .*$")
+
+(pier-defformat
+ todo
+ '((t (:inherit pier-special-text-face :weight bold)))
+ "^@@todo .*$")
+
+(pier-defformat
+ header
+ '((t (:inherit font-lock-function-name-face :weight bold))))
+
+(pier-defformat
+ header-1
+ '((t (:inherit pier-header-face :height 1.3)))
+ "^!\\([^!].*\\)$")
+
+(pier-defformat
+ header-2
+ '((t (:inherit pier-header-face :height 1.25)))
+ "^!!\\([^!].*\\)$")
+
+(pier-defformat
+ header-3
+ '((t (:inherit pier-header-face :height 1.2)))
+ "^!!!\\([^!].*\\)$")
+
+(pier-defformat
+ header-4
+ '((t (:inherit pier-header-face :height 1.15)))
+ "^!!!!\\([^!].*\\)$")
+
+(pier-defformat
+ script
+ '((t (:inherit pier-monospaced-face)))
+ "\\[\\[\\[[[anything]]\\]\\]\\]")
 
 ;;;###autoload
 (add-to-list 'auto-mode-alist '("\\.pier$" . pier-mode))
