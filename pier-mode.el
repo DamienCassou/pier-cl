@@ -89,7 +89,7 @@ face."
      (pier-defformat
       ,name
       '((t ,(append '(:inherit pier-special-text-face) face-spec)))
-      ,(concat "[^\\]\\(" markup ".*?[^\\]" markup "\\)")
+      ,(concat "[^\\]\\(" (regexp-quote markup) ".*?[^\\]" (regexp-quote markup) "\\)")
       1)
      (defun ,insert-markup-fn-name ()
        (interactive)
@@ -182,11 +182,11 @@ This helps improve font locking for block constructs such as pre blocks."
 (pier-defformat-special-text bold (:weight bold) "\"\"" ?b)
 (pier-defformat-special-text italic (:slant italic) "''" ?i)
 (pier-defformat-special-text strikethrough (:strike-through t) "--" ?-)
-(pier-defformat-special-text subscript (:height 0.8) "@@" ?s)
-(pier-defformat-special-text superscript (:height 0.8) "\\^^" ?^)
+(pier-defformat-special-text subscript (:height 0.8) "@@" ?@)
+(pier-defformat-special-text superscript (:height 0.8) "^^" ?^)
 (pier-defformat-special-text underlined (:underline t) "__" ?_)
-(pier-defformat-special-text link (:inherit link) "\\*" ?*)
-(pier-defformat-special-text link (:inherit link) "\\+" ?+)
+(pier-defformat-special-text link (:inherit link) "*" ?*)
+(pier-defformat-special-text link (:inherit link) "+" ?+)
 (pier-defformat-special-text monospaced (:inherit font-lock-constant-face) "==" ?=)
 
 (pier-defformat
