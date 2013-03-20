@@ -145,13 +145,6 @@ This helps improve font locking for block constructs such as pre blocks."
   `((special-font
      (actions ,@pier-key-mode-special-font-actions))))
 
-(defun pier-insert-special-text-markup-popup ()
-  (interactive)
-  (let ((magit-key-mode-key-maps nil)
-        (magit-key-mode-groups (pier-key-mode-groups)))
-    (magit-key-mode 'special-font)))
-
-(define-key pier-mode-map (kbd "C-c C-f") 'pier-insert-special-text-markup-popup)
 
 ;;;###autoload
 (define-derived-mode pier-mode text-mode "Pier"
@@ -174,6 +167,14 @@ This helps improve font locking for block constructs such as pre blocks."
   ;; Multiline font lock
   (add-hook 'font-lock-extend-region-functions
             'pier-font-lock-extend-region))
+
+(defun pier-insert-special-text-markup-popup ()
+  (interactive)
+  (let ((magit-key-mode-key-maps nil)
+        (magit-key-mode-groups (pier-key-mode-groups)))
+    (magit-key-mode 'special-font)))
+
+(define-key pier-mode-map (kbd "C-c C-f") 'pier-insert-special-text-markup-popup)
 
 (pier-defformat
  special-text
