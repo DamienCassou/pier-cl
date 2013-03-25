@@ -13,8 +13,7 @@ auto/
 *.aux
 *.glo
 *.idx
-*.pdf
 *.gz
 *.tex
 *.toc
-/Sample.pier.html
+/vm-ui.sh
