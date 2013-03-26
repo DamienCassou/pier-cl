@@ -229,6 +229,16 @@ This helps improve font locking for block constructs such as pre blocks."
  '((t (:inherit pier-monospaced-face)))
  "\\[\\[\\[[[anything]]\\]\\]\\]")
 
+(pier-defformat
+ description-term
+ '((t (:weight bold)))
+ "^;.*$")
+
+(pier-defformat
+ description-data
+ '((t (:slant italic)))
+ "^:.*$")
+
 ;;;###autoload
 (add-to-list 'auto-mode-alist '("\\.pier$" . pier-mode))
 
