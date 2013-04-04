@@ -16,9 +16,14 @@ elif [[ ! -f $1 ]]; then
 fi
 
 input="$1"
+vm="${PHARO_VM:-./vm.sh}"
 
-echo "GutembergConsole generateStandaloneLaTeXFromPier: '${input}'. WorldState addDeferredUIMessage: [ SmalltalkImage current snapshot: true andQuit: true ]." | ./vm.sh Pharo.image eval
-echo "GutembergConsole generateStandaloneHTMLFromPier: '${input}'. WorldState addDeferredUIMessage: [ SmalltalkImage current snapshot: true andQuit: true ]." | ./vm.sh Pharo.image eval
+"$vm" Pharo.image eval <<SMALLTALK
+GutembergConsole
+    generateStandaloneLaTeXFromPier: '${input}';
+    generateStandaloneHTMLFromPier: '${input}'.
 
-pdflatex ${input}.tex
-pdflatex ${input}.tex
+WorldState addDeferredUIMessage: [ SmalltalkImage current snapshot: false andQuit: true ].
+SMALLTALK
+
+latexmk "${input}"
