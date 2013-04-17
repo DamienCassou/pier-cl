@@ -236,7 +236,7 @@ This helps improve font locking for block constructs such as pre blocks."
 
 (pier-defformat
  description-data
- '((t (:slant italic)))
+ '((t (:slant italic :foreground "grey31")))
  "^:.*$")
 
 ;;;###autoload
