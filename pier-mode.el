@@ -1,7 +1,9 @@
 ;;; pier-mode.el --- Emacs Major mode for Pier-formatted text files
 ;;
 ;; Copyright (C) 2012 Damien Cassou <damien.cassou@gmail.com>
-;;
+
+;; Package-Requires: ((magit "1.2.0"))
+
 ;; This file is not part of GNU Emacs.
 
 ;; This program is free software; you can redistribute it and/or modify
