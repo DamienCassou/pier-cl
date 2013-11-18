@@ -21,7 +21,8 @@ vm="${PHARO_VM:-./vm.sh}"
 "$vm" Pharo.image eval <<SMALLTALK
 GutembergConsole
     generateStandaloneLaTeXFromPier: '${input}';
-    generateStandaloneHTMLFromPier: '${input}'.
+    generateStandaloneHTMLFromPier: '${input}';
+    generateStandaloneGitHubMarkdownFromPier: '${input}'.
 
 WorldState addDeferredUIMessage: [ SmalltalkImage current snapshot: false andQuit: true ].
 SMALLTALK
