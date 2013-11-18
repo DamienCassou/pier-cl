@@ -185,11 +185,25 @@ foo bar
 
 If you want either a label (to reference the script later) or a caption (to give a nice title to the script), write the following:
 
-[[[
+{{{markdown:
+	[[[label=script1|caption=My script that works|language=Smalltalk
+		self foo bar
+	]]]
+}}}
+{{{latex:
+\begin{verbatim}
 [[[label=script1|caption=My script that works|language=Smalltalk
-self foo bar
-\]]]
+	self foo bar
 ]]]
+\end{verbatim}
+}}}
+{{{html:
+<pre>
+[[[label=script1|caption=My script that works|language=Smalltalk
+	self foo bar
+]]]
+</pre>
+}}}
 
 which produces
 

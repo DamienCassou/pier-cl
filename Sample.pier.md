@@ -219,15 +219,7 @@ foo bar
 
 
 If you want either a label \(to reference the script later\) or a caption \(to give a nice title to the script\), write the following:
-
-
-```
-[[[label=script1|caption=My script that works|language=Smalltalk
-self foo bar
-\]]]
-```
-
-
+	[[[label=script1|caption=My script that works|language=Smalltalk		self foo bar	]]]
 which produces
 
 
