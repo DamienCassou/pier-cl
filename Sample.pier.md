@@ -51,7 +51,7 @@ generates a todo annotation that is not visible in the output\.
 
 ```
 -A block of lines,
--where each line starts with ==-==
+-where each line starts with -
 -is transformed to a bulleted list, where each line is an entry.
 ```
 
@@ -71,7 +71,7 @@ generates
 
 ```
 #A block of lines,
-#where each line starts with ==#==
+#where each line starts with #
 #is transformed to an ordered list, where each line is an entry.
 ```
 
@@ -209,15 +209,7 @@ generates Figure [pierLogo](#pierLogo) \(this reference has been generated using
 
 ##Scripts
 
-
-
-```
-\[[[
-foo bar
-\]]]
-```
-
-
+    [[[    	foo bar    ]]]
 generates
 
 
@@ -230,7 +222,7 @@ If you want either a label \(to reference the script later\) or a caption \(to g
 
 
 ```
-\[[[label=script1|caption=My script that works|language=Smalltalk
+[[[label=script1|caption=My script that works|language=Smalltalk
 self foo bar
 \]]]
 ```

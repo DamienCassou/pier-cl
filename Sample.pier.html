@@ -63,7 +63,7 @@
     <p>
                 <pre>
 -A block of lines,
--where each line starts with ==-==
+-where each line starts with -
 -is transformed to a bulleted list, where each line is an entry.        </pre>
 
     </p>
@@ -82,7 +82,7 @@ is transformed to a bulleted list, where each line is an entry.        </li>
     <p>
                 <pre>
 #A block of lines,
-#where each line starts with ==#==
+#where each line starts with #
 #is transformed to an ordered list, where each line is an entry.        </pre>
 
     </p>
@@ -196,7 +196,7 @@ centeredcenteredcentered left  right  centered    <h2>1.6. Links</h2>
     </p>
     <h3>1.6.2. External Links</h3>
     <p>
-        To create links to externals resources, use the <code>*</code><code>Pharo&gt;http://pharo-project.org/*</code> syntax which is rendered as <a href=http://pharo-project.org/>Pharo</a>.
+        To create links to externals resources, use the <code>*Pharo&gt;http://pharo-project.org/*</code> syntax which is rendered as <a href=http://pharo-project.org/>Pharo</a>.
     </p>
     <h2>1.7. Pictures</h2>
     <p>
@@ -217,11 +217,7 @@ centeredcenteredcentered left  right  centered    <h2>1.6. Links</h2>
     </p>
     <h2>1.8. Scripts</h2>
     <p>
-                <pre>
-\[[[
-foo bar
-\]]]        </pre>
-
+        <pre>[[[    foo bar]]]</pre>
     </p>
     <p>
         generates
@@ -236,8 +232,8 @@ foo bar        </pre>
     </p>
     <p>
                 <pre>
-\[[[label=script1|caption=My script that works
-foo bar
+[[[label=script1|caption=My script that works|language=Smalltalk
+self foo bar
 \]]]        </pre>
 
     </p>
@@ -246,7 +242,7 @@ foo bar
     </p>
     <p>
         <b>Script  1.1</b>        <pre>
-foo bar        </pre>
+self foo bar        </pre>
 
     </p>
     <p>
@@ -284,19 +280,14 @@ foo bar        </pre>
         This results in
     </p>
     <p>
-        
-\begin{equation}
-  \label{eq:1}
-  \frac{1+\sqrt{2}}{2}
-\end{equation}
-&lt;img src="equation1.png" title="Equation 1" /&gt;
+        <img src="equation1.png" title="Equation 1" />
     </p>
     <p>
-        <b>Take care:</b> avoid terminating the verbatim text with a <code>}</code> asthis will confuse the parser. So, don't write <code>{{{</code><code>begin{scriptsize}</code><code>}}}</code> but <code>{{{</code><code>begin{scriptsize} </code><code>}}}</code> instead.
+        <b>Take care:</b> avoid terminating the verbatim text with a <code>}</code> asthis will confuse the parser. So, don't write <code>{{{\begin{scriptsize}}}}</code> but <code>{{{\begin{scriptsize}}}}</code> instead.
     </p>
     <h2>1.10. Preformatted (less used)</h2>
     <p>
-        To create a preformatted block, begin each line with <code></code>=. A preformatted block uses equally spaced text so that spacing is preserved.
+        To create a preformatted block, begin each line with <code>=</code>. A preformatted block uses equally spaced text so that spacing is preserved.
     </p>
     <p>
                 <pre>
