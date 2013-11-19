@@ -5,6 +5,12 @@
 # Ordered List
 #- Second level (nested)
 
+;\;head
+:\:item
+;\;head
+:\:item
+
+_
 
 - ""\"\"bold text\"\"""
 - ''\'\'italic text\'\'''
@@ -20,16 +26,19 @@
 - Text@@\@\@subscript\@\@@@
 - Text^^\^\^supscript\^\^^^
 
+_
 
-|{ Left Header 	|} Right Header | Centered Header
-| Row		| Row | Row
-
-for
- 
 [[[
 |{ Left Header 	|} Right Header | Centered Header
 | Row		| Row | Row
 ]]]
+
+for
+ 
+|{ Left Header 	|} Right Header | Centered Header
+| Row		| Row | Row
+
+_
 
 \@anchor
 @anchor
@@ -43,13 +52,11 @@ for
 
 +caption>file://figures/image.png+ ==\+caption\>file://figures/image.png\+==
 
+_
 
 @@note \@\@note this is a note annotation.
 
-;\;head
-:\:item
-;\;head
-:\:item
+_
 
 {{{markdown:
 <a name="script1"></a>**My script that works**
@@ -73,6 +80,8 @@ for
 [[[label=script1|caption=My script that works|language=Smalltalk self foo bar ]]]
 \end{code}
 }}}
+
+_
 
 
 {{{latex:
