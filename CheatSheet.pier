@@ -1,2 +1,89 @@
-|!Pier |!Visual Result
-|{""bold text""} | ""bold text""
+! \! Title
+!! \!! Sub-Title
+
+- Unordered List
+# Ordered List
+#- Second level (nested)
+
+
+- ""\"\"bold text\"\"""
+- ''\'\'italic text\'\'''
+- ""''\"\"\'\'bold italic text\'\'\"\"''""
+- --\-\-strikethrough text\-\---
+- ""--\"\"\-\-bold strikethrough text\-\-\"\"--""
+- ""''--\"\"\'\'\-\-bold italic strikethrough text\-\-\'\'\"\"--''""
+- __\_\_underlined text\_\___
+- ""__\"\"\_\_bold underlined text\_\_\"\"__""
+- ''__\'\'\_\_italic underlined text\_\_\'\'__''
+- ""''__\"\"\'\'\_\_bold italic underlined text\_\_\'\'\"\"__''""
+- ""''--__\"\"\'\'\-\-\_\_bold italic strikethrough underlined text\_\_\-\-\'\'\"\"__--''""
+- Text@@\@\@subscript\@\@@@
+- Text^^\^\^supscript\^\^^^
+
+
+|{ \|\{ Left Header 	|} \|\} Right Header | \| Centered Header
+| \| Row		| \| Row | \| Row
+
+\@anchor
+@anchor
+
+
+*anchor* is produced by ==\*anchor\*==
+
+
+*\*Name\>http://www.google.fr\*>http://www.google.com*
+
+
++caption>file://figures/image.png+ ==\+caption\>file://figures/image.png\+==
+
+
+@@note \@\@note this is a note annotation.
+
+;\;head
+:\:item
+;\;head
+:\:item
+
+{{{markdown:
+<a name="script1"></a>**My script that works**
+
+```smalltalk
+[[[label=script1|caption=My script that works|language=Smalltalk self foo bar ]]]
+```
+}}}
+{{{html:
+<a name="script1"></a><b>My script that works</b>
+
+<pre>
+[[[label=script1|caption=My script that works|language=Smalltalk self foo bar ]]]
+</pre>
+}}}
+
+{{{latex:
+\label{script1}\textbf{My script that works}
+
+\begin{code}{}
+[[[label=script1|caption=My script that works|language=Smalltalk self foo bar ]]]
+\end{code}
+}}}
+
+
+{{{latex:
+\{\{\{latex:\\
+this is how you inject raw \LaTeX in your output file\\
+\}\}\}
+}}}
+
+
+{{{markdown:
+{{{markdown:<br>
+this is how you inject raw `markdown` in your output file
+<br>\}\}\}
+}}}
+
+
+{{{html:
+{{{html:<br>
+this is how you inject raw <b>HTML</b> in your output file
+<br>\}\}\}
+}}}
