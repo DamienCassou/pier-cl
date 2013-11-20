@@ -16,13 +16,13 @@ elif [[ ! -f $1 ]]; then
 fi
 
 input="$1"
-vm="${PHARO_VM:-./vm.sh}"
+vm="${PHARO_VM:-./pharo}"
 
 "$vm" Pharo.image eval <<SMALLTALK
-GutembergConsole
-    generateStandaloneLaTeXFromPier: '${input}';
+PRExporter
+    generateSBALaTeXChapterFromPier: '${input}';
     generateStandaloneHTMLFromPier: '${input}';
-    generateStandaloneGitHubMarkdownFromPier: '${input}'.
+    generateGitHubMarkdownFromPier: '${input}'.
 
 WorldState addDeferredUIMessage: [ SmalltalkImage current snapshot: false andQuit: true ].
 SMALLTALK

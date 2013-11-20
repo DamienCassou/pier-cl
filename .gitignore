@@ -17,3 +17,13 @@ auto/
 *.tex
 *.toc
 /vm-ui.sh
+
+compile.sh
+
+.gitignore
+
+.gitignore
+
+compile.sh
+
+*.dylib

@@ -38,7 +38,7 @@ generates a todo annotation that is not visible in the output.
 
 [[[
 -A block of lines,
--where each line starts with -
+-where each line starts with ==-==
 -is transformed to a bulleted list, where each line is an entry.
 ]]]
 
@@ -52,7 +52,7 @@ generates
 
 [[[
 #A block of lines,
-#where each line starts with #
+#where each line starts with ==#==
 #is transformed to an ordered list, where each line is an entry.
 ]]]
 
