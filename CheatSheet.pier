@@ -1,9 +1,9 @@
 ! \! Title
 !! \!! Sub-Title
 
-- Unordered List
-# Ordered List
-#- Second level (nested)
+- \- Unordered List
+# \# Ordered List
+#- \#\- Second level (nested)
 
 ;\;head
 :\:item
