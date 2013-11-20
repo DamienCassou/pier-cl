@@ -123,13 +123,13 @@ The contents of cells can be aligned left, centered or aligned right by using ==
 
 [[[
 ||centered||centered||centered
-|{ left |} right || centered
+|{ left |} right || center
 ]]]
 
 generates
 
 ||centered||centered||centered
-|{ left |} right || centered
+|{ left |} right || center
 
 !!Links
 
