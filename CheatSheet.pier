@@ -30,13 +30,13 @@ _
 
 [[[
 |{ Left Header 	|} Right Header | Centered Header
-| Row		| Row | Row
+| Row| Row | Row
 ]]]
 
 for
  
 |{ Left Header 	|} Right Header | Centered Header
-| Row		| Row | Row
+| Row| Row | Row
 
 _
 
