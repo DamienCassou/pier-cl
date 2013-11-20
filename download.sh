@@ -1,7 +1,10 @@
 #!/bin/bash
 
+git clean -x -f
+rm -rf pharo-vm
+
 VM_INSTALL_URL="http://files.pharo.org/script/ciPharoVM.sh"
-IMAGE_URL="https://ci.inria.fr/pharo-contribution/job/Pier3BookOnPharo20/lastSuccessfulBuild/artifact/Pier3BookOnPharo20.zip"
+IMAGE_URL="https://ci.inria.fr/pharo-contribution/job/Pillar/PHARO=20,VERSION=bleedingEdge,VM=vm/lastSuccessfulBuild/artifact/Pillar.zip"
 
 usage() {
     cat <<HELP
@@ -24,7 +27,7 @@ CERTCHECK="--no-check-certificate"
 wget --help | grep -- "$CERTCHECK" 2>&1 > /dev/null || CERTCHECK=''
 
 get_vm() {
-    wget ${CERTCHECK} --output-document - "$VM_INSTALL_URL" | bash
+    curl get.pharo.org/vm | bash
 }
 
 get_image() {
