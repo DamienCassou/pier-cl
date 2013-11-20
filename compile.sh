@@ -28,3 +28,4 @@ WorldState addDeferredUIMessage: [ SmalltalkImage current snapshot: false andQui
 SMALLTALK
 
 latexmk "${input}"
+latexmk -c
