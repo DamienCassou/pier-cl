@@ -20,7 +20,7 @@ vm="${PHARO_VM:-./pharo}"
 
 "$vm" Pharo.image eval <<SMALLTALK
 PRExporter
-    generateSBALaTeXChapterFromPier: '${input}';
+    generateStandaloneLaTeXFromPier: '${input}';
     generateStandaloneHTMLFromPier: '${input}';
     generateGitHubMarkdownFromPier: '${input}'.
 
