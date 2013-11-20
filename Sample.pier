@@ -219,11 +219,11 @@ This is another script (referenced as *script2*), with no caption this time:
 foo bar
 ]]]
 
-!!Verbatim
+!!Raw
 
-If you want to include verbatim text into a page you must enclose it in =={{{== and ==}}}==, otherwise Pier ensures that all text appears as you type it.
+If you want to include raw text into a page you must enclose it in =={{{== and ==}}}==, otherwise Pier ensures that all text appears as you type it.
 
-A good practice is to always specify for which kind of export the verbatim text must be outputted by starting the block with =={{{latex:== or =={{{html:== (for now only LaTeX and HTML are supported). For example, the following shows a formula, either using LaTeX or an image depending on the kind of export.
+A good practice is to always specify for which kind of export the raw text must be outputted by starting the block with =={{{latex:== or =={{{html:== (for now only LaTeX, HTML and Markdown are supported). For example, the following shows a formula, either using LaTeX or an image depending on the kind of export.
 
 [[[
 {{{latex:
