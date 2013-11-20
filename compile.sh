@@ -16,7 +16,7 @@ elif [[ ! -f $1 ]]; then
 fi
 
 input="$1"
-vm="./pharo"
+vm="${PHARO_VM:-./pharo}"
 
 "$vm" Pharo.image eval <<SMALLTALK
 PRExporter
