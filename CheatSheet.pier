@@ -35,7 +35,7 @@ _
 
 for
  
-| Left Header | Right Header | Centered Header
+|{ Left Header |} Right Header | Centered Header
 | Row | Row | Row
 
 _
