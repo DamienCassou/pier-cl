@@ -153,7 +153,7 @@ To include a picture, use the syntax ==\+caption>file://filename|parameters+==:
 
 generates Figure *pierLogo* (this reference has been generated using ==\*pierLogo*==).
 
-+This is the label of the picture>file://pier-logo.png|width=50|label=pierLogo+
++This is the caption of the picture>file://pier-logo.png|width=50|label=pierLogo+
 
 !!Scripts
 
